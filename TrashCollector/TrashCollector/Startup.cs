@@ -12,6 +12,8 @@ using TrashCollector.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Security.Claims;
+using TrashCollector.ActionFilters;
 
 namespace TrashCollector
 {
@@ -35,8 +37,13 @@ namespace TrashCollector
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
 
+            services.AddScoped<ClaimsPrincipal>(s => s.GetService<Microsoft.AspNetCore.Http.IHttpContextAccessor>().HttpContext.User);
+            services.AddControllers(config =>
+            {
+                config.Filters.Add(typeof(GlobalRouting));
+            });
             services.AddControllersWithViews();
-            services.AddRazorPages();
+            services.AddRazorPages();        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
