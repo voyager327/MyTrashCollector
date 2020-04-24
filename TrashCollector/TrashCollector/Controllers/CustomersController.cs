@@ -17,6 +17,8 @@ namespace TrashCollector.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        public object UserInterface { get; private set; }
+
         public CustomersController(ApplicationDbContext context)
         {
             _context = context;
@@ -163,5 +165,7 @@ namespace TrashCollector.Controllers
         {
             return _context.Customers.Any(e => e.Id == id);
         }
+               
+
     }
 }

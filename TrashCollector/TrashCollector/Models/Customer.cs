@@ -19,10 +19,15 @@ namespace TrashCollector.Models
         public string LastName { get; set; }
         public string Address { get; set; }
         public int ZipCode { get; set; }
+        public string PickUpDay { get; set; }
+        public string OneTimePickUpSpecificDate { get; set; }
+        public double MonthlyAccountBalance { get; set; }
+        public int TemporaryPickUpSuspension { get; set; }
 
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }
         public IdentityUser IdentityUser { get; set; }
 
     }
+
 }

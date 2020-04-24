@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrashCollector.Data;
 
 namespace TrashCollector.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200424213833_AddedMonthlyAccountBalance")]
+    partial class AddedMonthlyAccountBalance
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace TrashCollector.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6f68cecb-b6f0-4657-bc6c-dd2807302d07",
-                            ConcurrencyStamp = "98c510f6-bb44-43c6-bc00-2363b1378d57",
+                            Id = "c03b5ab7-cda7-4b5b-8457-0ce04fb5e035",
+                            ConcurrencyStamp = "b37115e2-2843-4a69-8f19-00baab511875",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "4c6b3b52-06d8-406b-837d-9268984316d9",
-                            ConcurrencyStamp = "f77ff51a-2ee0-4c3f-92c1-dbbd875d2a7d",
+                            Id = "ff2c55f2-8e76-4e6b-8e86-3657fc966122",
+                            ConcurrencyStamp = "0d9c1782-57b7-44bc-b8bc-5ae4f9d93fbe",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -259,9 +261,6 @@ namespace TrashCollector.Migrations
 
                     b.Property<string>("PickUpDay")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TemporaryPickUpSuspension")
-                        .HasColumnType("int");
 
                     b.Property<int>("ZipCode")
                         .HasColumnType("int");
