@@ -86,7 +86,7 @@ namespace TrashCollector.Controllers
             return View(customer);
         }
 
-        // GET: Customers/Edit/5
+        //// GET: Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -106,7 +106,7 @@ namespace TrashCollector.Controllers
         // POST: Customers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("CustomerId,FirstName,LastName,Address,IdentityUserId")] Customer customer)
         {

@@ -22,7 +22,8 @@ namespace TrashCollector.Models
         public string PickUpDay { get; set; }
         public DateTime OneTimePickUpSpecificDate { get; set; }
         public double MonthlyAccountBalance { get; set; }
-        public DateTime TemporaryPickUpSuspension { get; set; }
+        public DateTime StartDateTemporaySuspension { get; set; }
+        public DateTime EndDateTemporarySuspension { get; set; }
 
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }
@@ -30,7 +31,7 @@ namespace TrashCollector.Models
 
         [NotMapped]
         public List<string> PickUpDays { get; set; }
-        //public List<string> OneTimePickUpSpecificDates { get; set; }
+       
     }
 
 }

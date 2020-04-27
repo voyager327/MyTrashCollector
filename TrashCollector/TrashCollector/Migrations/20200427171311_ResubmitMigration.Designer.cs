@@ -10,8 +10,8 @@ using TrashCollector.Data;
 namespace TrashCollector.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200424181539_Initial")]
-    partial class Initial
+    [Migration("20200427171311_ResubmitMigration")]
+    partial class ResubmitMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace TrashCollector.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ebb6ae89-eac4-4e3b-b55d-f345b320aa8b",
-                            ConcurrencyStamp = "13fce627-2813-4666-84a9-21eddbbeed39",
+                            Id = "06b88385-c3e4-4bdd-abb5-d98a5c201c3b",
+                            ConcurrencyStamp = "88b4f079-b760-4245-9735-01fb993ff223",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "817286ac-2be6-4c8c-b39c-c7d3f1fb0d06",
-                            ConcurrencyStamp = "eefa10c7-6af9-4ea8-b07f-fb9597e3b992",
+                            Id = "a344d616-c05a-4ee2-8026-d343875e2e44",
+                            ConcurrencyStamp = "8e167776-7b1b-4516-b636-eb351083a566",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -253,6 +253,18 @@ namespace TrashCollector.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("MonthlyAccountBalance")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("OneTimePickUpSpecificDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PickUpDay")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDateTemporaySuspension")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("ZipCode")
                         .HasColumnType("int");
 
@@ -265,13 +277,16 @@ namespace TrashCollector.Migrations
 
             modelBuilder.Entity("TrashCollector.Models.Employee", b =>
                 {
-                    b.Property<int>("EmployeeId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
@@ -285,7 +300,7 @@ namespace TrashCollector.Migrations
                     b.Property<string>("Zipcode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("EmployeeId");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdentityUserId");
 

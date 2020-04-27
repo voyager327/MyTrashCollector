@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TrashCollector.Migrations
 {
-    public partial class Initial : Migration
+    public partial class ResubmitMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -162,6 +162,10 @@ namespace TrashCollector.Migrations
                     LastName = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     ZipCode = table.Column<int>(nullable: false),
+                    PickUpDay = table.Column<string>(nullable: true),
+                    OneTimePickUpSpecificDate = table.Column<DateTime>(nullable: false),
+                    MonthlyAccountBalance = table.Column<double>(nullable: false),
+                    StartDateTemporaySuspension = table.Column<DateTime>(nullable: false),
                     IdentityUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -179,8 +183,9 @@ namespace TrashCollector.Migrations
                 name: "Employees",
                 columns: table => new
                 {
-                    EmployeeId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    EmployeeId = table.Column<int>(nullable: false),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
@@ -189,7 +194,7 @@ namespace TrashCollector.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employees", x => x.EmployeeId);
+                    table.PrimaryKey("PK_Employees", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Employees_AspNetUsers_IdentityUserId",
                         column: x => x.IdentityUserId,
@@ -201,12 +206,12 @@ namespace TrashCollector.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "ebb6ae89-eac4-4e3b-b55d-f345b320aa8b", "13fce627-2813-4666-84a9-21eddbbeed39", "Customer", "CUSTOMER" });
+                values: new object[] { "06b88385-c3e4-4bdd-abb5-d98a5c201c3b", "88b4f079-b760-4245-9735-01fb993ff223", "Customer", "CUSTOMER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "817286ac-2be6-4c8c-b39c-c7d3f1fb0d06", "eefa10c7-6af9-4ea8-b07f-fb9597e3b992", "Employee", "EMPLOYEE" });
+                values: new object[] { "a344d616-c05a-4ee2-8026-d343875e2e44", "8e167776-7b1b-4516-b636-eb351083a566", "Employee", "EMPLOYEE" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
