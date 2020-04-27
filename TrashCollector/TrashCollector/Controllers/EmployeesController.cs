@@ -17,6 +17,8 @@ namespace TrashCollector.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        public object UserInterface { get; private set; }
+
         public EmployeesController(ApplicationDbContext context)
         {
             _context = context;
@@ -66,6 +68,8 @@ namespace TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                employee.IdentityUserId = userId;
                 _context.Add(employee);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

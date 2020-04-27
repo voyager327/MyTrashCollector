@@ -56,8 +56,16 @@ namespace TrashCollector.Controllers
         public IActionResult Create()
         {
             ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id");
-            return View();
+            //return View();
+
+            List<string> pickupday = new List<string>() { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+            Customer customer = new Customer()
+            {
+                PickUpDays = pickupday
+            };
+            return View(customer);
         }
+               
 
         // POST: Customers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
