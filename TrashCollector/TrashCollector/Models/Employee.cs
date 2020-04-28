@@ -18,7 +18,9 @@ namespace TrashCollector.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
-        public string Zipcode { get; set; }
+        public int ZipCode { get; set; }
+        public int TrashPickUpByZipCode { get; set; }
+
 
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }

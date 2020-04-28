@@ -32,6 +32,12 @@
             </div>
 
             <div class="form-group">
+                <label asp-for="ZipCode" class="control-label"></label>
+                <input asp-for="ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
                 <label asp-for="PickUpDays" class="control-label"></label>
                 <input asp-for="PickUpDays" class="form-control" />
                 <span asp-validation-for="PickUpDays" class="text-danger"></span>
