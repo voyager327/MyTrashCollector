@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrashCollector.Data;
 
 namespace TrashCollector.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200428180927_AddedFilterCustomerPickUp")]
+    partial class AddedFilterCustomerPickUp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace TrashCollector.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5a1f629a-f50b-4e79-921f-b9e53af34f54",
-                            ConcurrencyStamp = "6a0f69ff-bd5a-4d7b-b580-f55afea3b0db",
+                            Id = "61f31d02-1ccf-4fa6-a991-f0a049e3bffd",
+                            ConcurrencyStamp = "0a5d024b-5cb1-49a2-b3a0-62a90b3114bb",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "682b875a-c780-4ca3-8e3b-549dfd913e42",
-                            ConcurrencyStamp = "ec2d3ce4-ee6b-40af-91cf-21caad341315",
+                            Id = "7de02945-9e8e-4abd-a856-46028e1859a3",
+                            ConcurrencyStamp = "6ce163a8-801e-470c-8c48-3e2bba7949a0",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -285,12 +287,6 @@ namespace TrashCollector.Migrations
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("ChargedConfirmedPickUp")
-                        .HasColumnType("float");
-
-                    b.Property<bool>("ConfirmPickUp")
-                        .HasColumnType("bit");
 
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");

@@ -27,10 +27,15 @@ namespace TrashCollector.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var myEmployeeProfile = _context.Employees.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            var zipcode = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var myEmployeeProfile = _context.Employees.Where(c => c.IdentityUserId == zipcode).SingleOrDefault();
             var applicationDbContext = _context.Employees.Include(e => e.IdentityUser);
             return View(await applicationDbContext.ToListAsync());
+
+            //var zipcode  = _context.ZipCode.Include(m => m.Customers).ToList();
+
+            //return View(zipcode);
+
         }
 
         // GET: Employees/Details/5
@@ -56,7 +61,21 @@ namespace TrashCollector.Controllers
         public IActionResult Create()
         {
             ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id");
-            return View();
+            //return View();
+
+            List<int> zipcode = new List<int >() { 95206, 73099 };
+            Employee employee= new Employee()
+            {
+                ZipCodes = zipcode
+            };
+            return View(employee);
+
+            //List<int> zipcode = new List<int>() { };
+            //Employee customer = new Customer()
+            //{
+            //   ZipCode = zipcode
+            //};
+            //return View(employee);
         }
 
         // POST: Employees/Create

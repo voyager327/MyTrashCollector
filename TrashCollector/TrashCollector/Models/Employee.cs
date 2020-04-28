@@ -20,10 +20,16 @@ namespace TrashCollector.Models
         public string Address { get; set; }
         public int ZipCode { get; set; }
         public int TrashPickUpByZipCode { get; set; }
+        public string FilterCustomerPickUp { get; set; }
+        public bool ConfirmPickUp { get; set; }
 
+        public double ChargedConfirmedPickUp { get; set; }
 
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }
         public IdentityUser IdentityUser { get; set; }
+
+        [NotMapped]
+        public List<int> ZipCodes { get; set; }
     }
 }

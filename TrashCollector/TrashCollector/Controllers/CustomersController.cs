@@ -31,6 +31,10 @@ namespace TrashCollector.Controllers
             var myCustomerProfile = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
             var applicationDbContext = _context.Customers.Include(c => c.IdentityUser);
             return View(await applicationDbContext.ToListAsync());
+
+            //var ZipCode = dbo.Employees.ToList();
+
+            //return View(ZipCode);
         }
 
         // GET: Customers/Details/5
