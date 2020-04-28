@@ -29,8 +29,11 @@ namespace TrashCollector.Controllers
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var myCustomerProfile = _context.Customers.Where(c => c.IdentityUserId == userId).SingleOrDefault();
-            var applicationDbContext = _context.Customers.Include(c => c.IdentityUser);
-            return View(await applicationDbContext.ToListAsync());
+            if (myCustomerProfile == null)
+            {
+                return RedirectToAction("Create");
+            }
+            return View(myCustomerProfile);
 
             //var ZipCode = dbo.Employees.ToList();
 

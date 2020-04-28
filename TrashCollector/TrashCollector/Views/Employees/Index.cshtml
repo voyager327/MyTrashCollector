@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TrashCollector.Models.Employee>
+﻿@model IEnumerable<TrashCollector.Models.Customer>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,9 +7,6 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -24,6 +21,21 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ZipCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PickUpDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OneTimePickUpSpecificDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MonthlyAccountBalance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDateTemporaySuspension)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDateTemporarySuspension)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IdentityUser)
@@ -47,13 +59,24 @@
                 @Html.DisplayFor(modelItem => item.ZipCode)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdentityUser.Id)
+                @Html.DisplayFor(modelItem => item.PickUpDay)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.EmployeeId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.EmployeeId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.EmployeeId">Delete</a>
+                @Html.DisplayFor(modelItem => item.OneTimePickUpSpecificDate)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MonthlyAccountBalance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDateTemporaySuspension)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDateTemporarySuspension)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdentityUser.Id)
+            </td>
+
         </tr>
 }
     </tbody>

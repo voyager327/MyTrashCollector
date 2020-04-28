@@ -27,11 +27,16 @@ namespace TrashCollector.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            var zipcode = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var myEmployeeProfile = _context.Employees.Where(c => c.IdentityUserId == zipcode).SingleOrDefault();
-            var applicationDbContext = _context.Employees.Include(e => e.IdentityUser);
-            return View(await applicationDbContext.ToListAsync());
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var myEmployeeProfile = _context.Employees.Where(c => c.IdentityUserId ==userId).SingleOrDefault();
+            if (myEmployeeProfile == null)
+            {
+                return RedirectToAction("Create");
+            }
+            var customers = _context.Customers.Where(c => c.ZipCode == myEmployeeProfile.ZipCode);
+            return View(customers);
 
+           
             //var zipcode  = _context.ZipCode.Include(m => m.Customers).ToList();
 
             //return View(zipcode);
