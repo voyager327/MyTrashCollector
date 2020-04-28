@@ -17,8 +17,8 @@ namespace TrashCollector.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public object UserInterface { get; private set; }
-
+        //public object UserInterface { get; private set; }
+         
         public EmployeesController(ApplicationDbContext context)
         {
             _context = context;
@@ -28,7 +28,7 @@ namespace TrashCollector.Controllers
         public async Task<IActionResult> Index()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var myCustomerProfile = _context.Employees.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            var myEmployeeProfile = _context.Employees.Where(c => c.IdentityUserId == userId).SingleOrDefault();
             var applicationDbContext = _context.Employees.Include(e => e.IdentityUser);
             return View(await applicationDbContext.ToListAsync());
         }
