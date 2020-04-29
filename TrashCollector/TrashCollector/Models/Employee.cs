@@ -19,7 +19,7 @@ namespace TrashCollector.Models
         public string LastName { get; set; }
         public string Address { get; set; }
         public int ZipCode { get; set; }
-        public int TrashPickUpByZipCode { get; set; }
+        public int TrashPickUpToday { get; set; }
         public string FilterCustomerPickUp { get; set; }
         public bool ConfirmPickUp { get; set; }
 

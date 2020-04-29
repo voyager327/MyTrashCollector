@@ -1,15 +1,21 @@
-﻿@model IEnumerable<TrashCollector.Models.Customer>
+﻿@model IEnumerable<TrashCollector.Models.Employee>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Welcome</h1>
 
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
@@ -22,20 +28,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.ZipCode)
             </th>
+           
             <th>
-                @Html.DisplayNameFor(model => model.PickUpDay)
+                @Html.DisplayNameFor(model => model.FilterCustomerPickUp)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OneTimePickUpSpecificDate)
+                @Html.DisplayNameFor(model => model.ConfirmPickUp)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MonthlyAccountBalance)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartDateTemporaySuspension)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndDateTemporarySuspension)
+                @Html.DisplayNameFor(model => model.ChargedConfirmedPickUp)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IdentityUser)
@@ -46,6 +47,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeId)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
@@ -58,25 +62,24 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ZipCode)
             </td>
+            
             <td>
-                @Html.DisplayFor(modelItem => item.PickUpDay)
+                @Html.DisplayFor(modelItem => item.FilterCustomerPickUp)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OneTimePickUpSpecificDate)
+                @Html.DisplayFor(modelItem => item.ConfirmPickUp)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MonthlyAccountBalance)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDateTemporaySuspension)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDateTemporarySuspension)
+                @Html.DisplayFor(modelItem => item.ChargedConfirmedPickUp)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdentityUser.Id)
             </td>
-
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
         </tr>
 }
     </tbody>
