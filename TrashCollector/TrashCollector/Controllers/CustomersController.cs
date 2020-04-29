@@ -34,10 +34,7 @@ namespace TrashCollector.Controllers
                 return RedirectToAction("Create");
             }
             return View(myCustomerProfile);
-
-            //var ZipCode = dbo.Employees.ToList();
-
-            //return View(ZipCode);
+   
         }
 
         // GET: Customers/Details/5

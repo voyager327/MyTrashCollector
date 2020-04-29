@@ -36,11 +36,6 @@ namespace TrashCollector.Controllers
             var customers = _context.Customers.Where(c => c.ZipCode == myEmployeeProfile.ZipCode);
             return View(customers);
 
-           
-            //var zipcode  = _context.ZipCode.Include(m => m.Customers).ToList();
-
-            //return View(zipcode);
-
         }
 
         // GET: Employees/Details/5
