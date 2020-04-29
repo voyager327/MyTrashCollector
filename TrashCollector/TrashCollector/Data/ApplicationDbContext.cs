@@ -26,20 +26,20 @@ namespace TrashCollector.Data
 
             builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Customer", NormalizedName = "CUSTOMER" });
             builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "Employee", NormalizedName = "EMPLOYEE" });
-                 
-            //builder.Entity<IdentityRole>()
-            //    .HasData(
-            //         new IdentityRole
-            //         {
-            //             Name = "Admin",
-            //             NormalizedName = "ADMIN"
-            //         }
-            //     );
-            
+
+            builder.Entity<IdentityRole>()
+                .HasData(
+                     new IdentityRole
+                     {
+                         Name = "Admin",
+                         NormalizedName = "ADMIN"
+                     }
+                 );
+
 
 
         }
-          
-    
+
+
     }
 }
